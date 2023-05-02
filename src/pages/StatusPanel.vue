@@ -49,7 +49,7 @@
           <div>
             <n-text italic>系统后台服务</n-text>
           </div>
-          <n-h3 type="info" prefix="bar" style="display: inline">运行时间</n-h3>
+          <n-h3 type="info" prefix="bar" style="display: inline">状态</n-h3>
           <n-text style="margin-left: 10px">{{ nowTime }}</n-text>
           <n-h3 prefix="bar" :type="louiseStatus">{{ louiseText }}</n-h3>
           <n-divider />
@@ -96,7 +96,7 @@ export default defineComponent({
     this.nowTimes = setInterval(() => {
       if (this.$refs.webSocket.isConn) {
         this.louiseStatus = 'success'
-        this.louiseText = 'CPU负载: ' + this.$refs.webSocket_cpuInfo.data.cpu_payload
+        this.louiseText = this.$refs.webSocket_cpuInfo.data.cpu_payload
       }
       else {
         this.louiseStatus = 'error'
