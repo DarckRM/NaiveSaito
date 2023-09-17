@@ -33,5 +33,5 @@ jobs:
           local: dist/templates/*
           remote: /home/darcklh/qqbot/NaiveSaito/
           host: ${{ secrets.AZURE_HOST }}
-          username: ${{ secrets.AZURE_USERNAME }}
+          username: ${{ secrets.AZURE_USER }}
           privateKey: ${{ secrets.AZURE_SSH_KEY }}
