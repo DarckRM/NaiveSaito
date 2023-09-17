@@ -26,3 +26,12 @@ jobs:
         with:
           node-version: 16
       - run: yarn build
+      
+      - name: Deploy to server
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: dist/templates/*
+          remote: /home/darcklh/qqbot/NaiveSaito/
+          host: ${{ secrets.AZURE_HOST }}
+          username: ${{ secrets.AZURE_USERNAME }}
+          privateKey: ${{ secrets.AZURE_SSH_KEY }}
