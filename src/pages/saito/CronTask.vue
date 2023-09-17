@@ -42,7 +42,7 @@
       :scroll-x="1080"
       :data="dataList"
       :pagination="pagination"
-      :row-key="(row) => row.plugin_id"
+      :row-key="(row) => row.task_id"
       @update:checked-row-keys="handleCheck"
     />
   </n-card>
@@ -93,17 +93,19 @@ const creatColumns = ({ popMessage }) => {
     {
       title: "功能",
       key: "url",
+      width: 200,
       ellipsis: true,
     },
     {
       title: "类型",
       key: "type",
-      width: 250,
+      width: 50,
       ellipsis: true,
     },
     {
       title: "目标",
       key: "target",
+      width: 200,
     },
     {
       title: "状态",
@@ -117,7 +119,7 @@ const creatColumns = ({ popMessage }) => {
             type: row.is_enabled == 1 ? "primary" : "error",
             ghost: row.is_enabled == 1 ? true : false,
             onClick() {
-              axios.post("plugin-info/switchStatus", row).then((result) => {
+              axios.delete("cron-task/" + row.task_id, row).then((result) => {
                 let msg = result.data.msg;
                 //let code = result.data.code
                 row.is_enabled = -row.is_enabled;
@@ -144,7 +146,7 @@ const creatColumns = ({ popMessage }) => {
             ghost: true,
             disabled: row.is_enabled == 1 ? false : true,
             onClick() {
-              axios.get("plugin-info/reload/" + row.plugin_id).then((result) => {
+              axios.get("cron-task/reload/" + row.task_id).then((result) => {
                 let msg = result.data.msg;
                 popMessage(msg, result.data.code);
               });

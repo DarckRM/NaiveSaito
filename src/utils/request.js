@@ -66,4 +66,27 @@ export default {
       });
     });
   },
+  delete(url, data, responseType) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: "delete",
+        url,
+        data,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json; charset=utf-8",
+          withCredentials: true,
+        },
+        //默认json格式，如果是下载文件，需要传 responseType:'blob'
+        responseType:
+          responseType == null || responseType == "" ? "json" : responseType,
+      }).then((response) => {
+        if (response.status == 200) {
+          resolve(response)
+        } else {
+          reject(response)
+        }
+      })
+    })
+  }
 };

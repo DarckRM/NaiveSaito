@@ -112,7 +112,7 @@ export default router
 
 router.beforeEach((to, from, next) => {
   const now = new Date()
-  if(now - store.state.token > 518400 && to.meta.auth) {
+  if(now - store.state.token > 51840000 && to.meta.auth) {
     store.commit('del_token', "")
     return next('/403')
   }
