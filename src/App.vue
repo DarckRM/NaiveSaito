@@ -4,39 +4,45 @@
 </script>
 
 <template>
-<n-message-provider>
-<n-dialog-provider>
-<n-notification-provider>
-  <router-view></router-view>
-</n-notification-provider>
-</n-dialog-provider>
-</n-message-provider>
+  <n-message-provider>
+    <n-dialog-provider>
+      <n-notification-provider>
+        <n-theme-editor>
+          <router-view></router-view>
+        </n-theme-editor>
+      </n-notification-provider>
+    </n-dialog-provider>
+  </n-message-provider>
 </template>
 
 <style>
-
 #app {
-  font-family: v-sans, v-mono, other-fallbacks;;
+  font-family: v-sans, v-mono, other-fallbacks;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   height: auto;
 }
-
 </style>
 
 <script>
-import { defineComponent } from 'vue'
-import { NDivider, NMessageProvider, NDialogProvider, NNotificationProvider } from 'naive-ui'
-import { router } from './router'
+import { defineComponent } from "vue";
+import {
+  NDivider,
+  NMessageProvider,
+  NDialogProvider,
+  NNotificationProvider,
+  NThemeEditor,
+} from "naive-ui";
+import { router } from "./router";
 
 export default defineComponent({
   components: {
     NDivider,
     NMessageProvider,
     NDialogProvider,
-    NNotificationProvider
-  }
-})
+    NNotificationProvider,
+    NThemeEditor,
+  },
+});
 </script>
-
