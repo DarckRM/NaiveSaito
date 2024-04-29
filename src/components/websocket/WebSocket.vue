@@ -3,7 +3,7 @@
 <script>
 import { defineComponent } from "vue";
 
-const websocket_url = "ws://azure.rmdarck.icu:8099/saito_ws/";
+const websocket_url = import.meta.env.VITE_WEBSOCKET_URL;
 
 export default defineComponent({
   props: {
