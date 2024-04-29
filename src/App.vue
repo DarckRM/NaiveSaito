@@ -1,6 +1,5 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+
 </script>
 
 <template>
@@ -8,7 +7,9 @@
     <n-dialog-provider>
       <n-notification-provider>
         <n-theme-editor>
-          <router-view></router-view>
+          <n-config-provider :theme-overrides="theme">
+            <router-view></router-view>
+          </n-config-provider>
         </n-theme-editor>
       </n-notification-provider>
     </n-dialog-provider>
@@ -33,16 +34,31 @@ import {
   NDialogProvider,
   NNotificationProvider,
   NThemeEditor,
+  NConfigProvider
 } from "naive-ui";
 import { router } from "./router";
 
 export default defineComponent({
+  setup() {
+    const theme = {
+      common: {
+        primaryColor: "#EE5B79FF",
+        primaryColorHover: "#FF839CFF",
+        primaryColorPressed: "#D74761FF",
+        primaryColorSuppl: "#F2759AFF",
+      },
+    }
+    return {
+      theme
+    }
+  },
   components: {
     NDivider,
     NMessageProvider,
     NDialogProvider,
     NNotificationProvider,
     NThemeEditor,
+    NConfigProvider
   },
 });
 </script>

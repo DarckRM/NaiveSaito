@@ -1,45 +1,38 @@
 <template>
-  <div id="loginDiv">
-    <div style="margin: 0 auto; width: 400px">
-      <img style="width: 150px" alt="Vue logo" src="../assets/logo.png" />
-      MyLouise Backfront Alpha
-    </div>
-    <n-divider />
-    <n-card v-bind:title="loginPageTitle" id="loginCard">
-      <n-tabs @update:value="updateValue" default-value="signin">
-        <n-tab-pane name="signin" tab="登录">
-          <n-form :model="loginForm">
-            <n-form-item>
-              <n-input v-model:value="loginForm.username" placeholder="用户名" />
-            </n-form-item>
-            <n-form-item>
-              <n-input
-                v-on:keyup.enter="signUp()"
-                type="password"
-                show-password-on="mousedown"
-                placeholder="密码"
-                :maxlength="8"
-                v-model:value="loginForm.password"
-              />
-            </n-form-item>
-          </n-form>
-          <n-button @click="quickLogin()">Login</n-button>
-          <n-button style="margin-left: 60px" @click="signUp()" type="primary"
-            >Confirm</n-button
-          >
-        </n-tab-pane>
-        <n-tab-pane name="signup" tab="注册">
-          <n-button style="margin: 20px 25px">Reset</n-button>
-          <n-button @click="signUp()" type="primary" style="margin: 20px 25px"
-            >Confirm</n-button
-          >
-        </n-tab-pane>
-        <n-tab-pane name="image-retrieve" tab="图像检索">
-          <ImageRetrieve></ImageRetrieve>
-        </n-tab-pane>
-      </n-tabs>
+  <n-space vertical justify="center" align="center" :style="{ marginTop: '100px'}">
+    <n-space align="center">
+      <n-avatar :size="120" round src="src/assets/logo.png" :style="{ backgroundColor: 'white' }" />
+      <n-h4>
+        MyLouise Backfront Alpha
+      </n-h4>
+    </n-space>
+    <n-card hoverable embedded style="width: 800px">
+      <n-space justify="center" align="center">
+        <n-space vertical>
+          <n-image src="src/assets/moe.png"></n-image>
+          <n-h1 prefix="bar">Welcome home</n-h1>
+        </n-space>
+        <n-card :title="loginPageTitle" id="loginCard">
+          <n-tabs @update:value="updateValue" default-value="signin">
+            <n-tab-pane name="signin" tab="登录">
+              <n-form :model="loginForm">
+                <n-form-item label="Account">
+                  <n-input v-model:value="loginForm.username" placeholder="Account" />
+                </n-form-item>
+                <n-form-item label="Password">
+                  <n-input v-on:keyup.enter="signUp()" type="password" show-password-on="mousedown"
+                    placeholder="Password" :maxlength="8" v-model:value="loginForm.password" />
+                </n-form-item>
+              </n-form>
+              <n-button type="primary" @click="quickLogin()">Login</n-button>
+            </n-tab-pane>
+            <n-tab-pane tab="Dashboard">
+            </n-tab-pane>
+          </n-tabs>
+        </n-card>
+      </n-space>
     </n-card>
-  </div>
+  </n-space>
 </template>
 
 <style>
@@ -47,6 +40,7 @@
   width: 300px;
   margin: 50px auto;
 }
+
 #loginDiv {
   margin: 100px auto;
 }
